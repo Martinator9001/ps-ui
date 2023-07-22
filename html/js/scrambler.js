@@ -237,11 +237,12 @@ function ScramblerTimer(timeout){
     timerDiff.setTime(timerNow - timerStart);
     let ms = timerDiff.getMilliseconds();
     let sec = timerDiff.getSeconds();
+    let min = timerDiff.getMinutes();
     if (ms < 10) {ms = "00"+ms;}else if (ms < 100) {ms = "0"+ms;}
     let ms2 = (999-ms);
     if (ms2 > 99) ms2 = Math.floor(ms2/10);
     if (ms2 < 10) ms2 = "0"+ms2;
-    document.querySelector('.scrambler-hack .scrambler-timer').innerHTML = (timeout-1-sec)+"."+ms2;
+    document.querySelector('.scrambler-hack .scrambler-timer').innerHTML = (timeout-1-sec-min*60)+"."+ms2;
 }
 function StopScramblerTimer(){
     clearInterval(timer_time);
